@@ -1,0 +1,71 @@
+{% extends "PolytechProjetCoBundle::layout.html.twig" %}
+
+{% block title %}
+  Produits - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<h2>Produits</h2>
+
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">Nos Produits</h3>
+        
+        <div class="pull-right">
+            Nombre total de produits : {{ produits.getTotalItemCount }}
+        </div>
+    </div>
+      <div class="box-body">
+        
+          <div class="row"> 
+            {% for produit in produits %}
+
+                
+        
+                  <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">{{produit.nom}}</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="col-md-12">
+                                <img src="{{ asset(produit.getMediaId.AssetPath) }}" alt="{{ produit.getMediaId.name }}" class="img-Products">
+                            </div>
+
+                            <p>{{ produit.description|length > 50 ? produit.description|slice(0, 50) ~ '...' : produit.description }}</p>
+
+                        </div>
+                        <div class="box-footer">
+                            <div class="col-xs-6">
+                                <a href="{{ path('polytech_ecommerce_ProduitDetails',{'id':produit.id}) }}">
+                                    <button class="btn btn-block btn-default">Détails</button>
+                                </a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="{{ path('polytech_ecommerce_AjouterPanier',{'id':produit.id}) }}">
+                                    <button class="btn btn-block btn-default">Ajouter</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.col -->
+
+                           
+
+          
+            {% endfor %}
+
+          </div> 
+          
+      </div><!-- /.box-body -->
+        <div class="box-footer">
+            {# display navigation #}
+            <div class="navigation">
+                {{ knp_pagination_render(produits) }}
+            </div>
+        </div>
+    </div><!-- /.box -->
+
+
+
+{% endblock %}

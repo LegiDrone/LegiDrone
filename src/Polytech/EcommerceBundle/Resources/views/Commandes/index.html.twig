@@ -1,0 +1,79 @@
+{% extends "PolytechProjetCoBundle::layoutAdmin.html.twig" %}
+
+{% block title %}
+  Produits - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-errors">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+    <h1>Commandes</h1>
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <div class="pull-left">
+            <h4>Liste des commandes</h4>
+        </div>
+        <!--div class="pull-right">
+            <a href="{{ path('admin_commandes_new') }}" class="btn btn-primary btn-block btn-flat">
+                Créer une nouvelle commande
+            </a>
+        </div-->
+        
+    </div>
+    <div class="box-body">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Référence</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Commande</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('admin_commandes_show', { 'id': entity.id }) }}">{{ entity.reference }}</a></td>
+                    <td>
+                        {% if entity.getStatus() == 1 %}
+                        <span class="label label-success">Validé</span>
+                        {% elseif entity.getStatus() == 2 %}
+                        <span class="label label-danger">En attente de paiement</span>
+                        {% elseif entity.getStatus() == 3 %}
+                        <span class="label label-warning">En cours de traitement</span>
+                        {% else %}
+                        <span class="label label-danger">Erreur</span>
+                        {% endif %}
+                    </td>
+                    <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>Commandes</td>
+                    <td>
+                        <a href="{{ path('admin_commandes_show', { 'id': entity.id }) }}">
+                            <i class="glyphicon glyphicon-eye-open" title="Voir la commande"></i>
+                        </a>
+                        <a href="{{ path('admin_commandes_edit', { 'id': entity.id }) }}">
+                            <i class="glyphicon glyphicon-edit" title="Editer la commande"></i>
+                        </a>
+                        <a href="{{ path('polytech_user_facturesPDF', { 'id' : entity.id }) }}" target="_blank" title="Voir la facture" >
+                            <i class="glyphicon glyphicon-repeat"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

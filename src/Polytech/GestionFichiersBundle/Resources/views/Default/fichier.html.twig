@@ -1,0 +1,63 @@
+
+{# src/Polytech/ProjetCo/Resources/views/Advert/index.html.twig #}
+
+{% extends "PolytechProjetCoBundle::layoutAdmin.html.twig" %}
+
+{% block title %}
+  {{title}} - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+<h2>{{title}}</h2>
+<div class="box">
+    <div class="box-body">
+        <form method="post" {{ form_enctype(form) }}>
+      {{ form_start(form, {'attr': {'class': 'register-box-body'}}) }}
+
+        <p class="login-box-msg">Sélectionner le fichier à ajouter</p>
+
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form) }}  
+            
+        <!--Premier champ : le titre du fichier-->
+        <div class="form-group has-feedback">
+          {# Génération du label. #}
+
+          {# Affichage des erreurs pour ce champ précis. #}
+          {{ form_errors(form.titre) }}
+
+            {# Génération de l'input. #}
+            {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+            
+            <table class="table table-responsive">
+                <tbody>
+                    <tr>
+                        <th>{{ form_label(form.dateValiditee, "Date de validitée", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}</th>
+                        <td>{{ form_errors(form.dateValiditee) }}{{ form_widget(form.dateValiditee) }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form_label(form.departement, "Fichier", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}</th>
+                        <td>{{ form_errors(form.departement) }}{{ form_widget(form.departement) }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form_label(form.file, "Fichier", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}</th>
+                        <td>{{ form_errors(form.file) }}{{ form_widget(form.file) }}</td>
+                    </tr>
+                </tbody>
+            </table>  
+
+        <!--Le bouton de validation-->
+        <div class="pull-right">
+              <button type="submit" class="btn btn-primary btn-block">Valider</button>
+        </div>
+
+      {# Fermeture de la balise  du formulaire HTML #}
+      {{ form_end(form) }}
+    </form>
+    </div>
+</div>
+        
+{% endblock %}

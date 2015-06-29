@@ -1,0 +1,107 @@
+{% extends "PolytechProjetCoBundle::layout.html.twig" %}
+
+
+{% block body %}
+<h2>{{title}}</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Adresses de livraison</h3>
+              <div class="box-tools pull-right">
+              </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                {% if utilisateur.adresses|length != 0 %}
+                    <form action="{{ path('polytech_ecommerce_Validation') }}" method="POST">
+                    <h3>Adresses de livraison</h3>
+                    {% for adresse in utilisateur.adresses %}
+                        <div class="checkbox">
+                            <label class="radio">
+                                <input type="radio" name="livraison" value="{{ adresse.id }}" {% if loop.index0 == 0 %}checked="checked"{% endif %}>
+                                {{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }} - {{ adresse.pays }} <a href="{{ path('polytech_ecommerce_LivraisonSuppressionAdresse', { 'id' : adresse.id }) }}"><i class="glyphicon glyphicon-trash"></i></a>
+                                <br />{{ adresse.prenom }} {{ adresse.nom }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                    {% if utilisateur.adresses|length == 0 %}
+                        <p>Pas d'adresses </p>
+                    {% endif %}
+
+                <h3>Adresses de facturation</h3>
+
+                    {% for adresse in utilisateur.adresses %}
+                        <div class="checkbox">
+                            <label class="radio">
+                                <input type="radio" name="facturation" value="{{ adresse.id }}" {% if loop.index0 == 0 %}checked="checked"{% endif %}>
+                                {{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }} - {{ adresse.pays }} <a href="{{ path('polytech_ecommerce_LivraisonSuppressionAdresse', { 'id' : adresse.id }) }}"><i class="glyphicon glyphicon-trash"></i></a>
+                                <br />{{ adresse.prenom }} {{ adresse.nom }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">Valider mes adresses</button>
+                        </div>
+                </form>
+                {% else %}
+                    <h3>Pas d'adresse associées au compte</h3>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Entrer une adresse de livraison</h3>
+              <div class="box-tools pull-right">
+              </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <form action="{{ path('polytech_ecommerce_Livraison') }}" method="POST">
+                    <div class="form-group has-feedback">
+                    {{ form_widget(form.nom, {'attr': {'class': 'form-control','placeholder': 'Nom'}}) }}
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                    {{ form_widget(form.prenom, {'attr': {'class': 'form-control','placeholder': 'Prénom'}}) }}
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                    {{ form_widget(form.telephone, {'attr': {'class': 'form-control','placeholder': 'Téléphone'}}) }}
+                    <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                    {{ form_widget(form.adresse, {'attr': {'class': 'form-control','placeholder': 'Adresse'}}) }}
+                    <span class="glyphicon glyphicon-home form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                    {{ form_widget(form.complement, {'attr': {'class': 'form-control','placeholder': 'Complément'}}) }}
+                    <span class="glyphicon glyphicon-home form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                    {{ form_widget(form.cp, {'attr': {'class': 'form-control','placeholder': 'Code Postal'}}) }}
+                    <span class="glyphicon glyphicon-home form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                    {{ form_widget(form.ville, {'attr': {'class': 'form-control','placeholder': 'Ville'}}) }}
+                    <span class="glyphicon glyphicon-home form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                    {{ form_widget(form.pays, {'attr': {'class': 'form-control','placeholder': 'Pays'}}) }}
+                    <span class="glyphicon glyphicon-home form-control-feedback"></span>
+                    </div>
+                    {{form_rest(form)}}
+                    <div class="pull-right">
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn btn-block btn-primary">Ajouter</button>
+                        </div><!-- /.col -->
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

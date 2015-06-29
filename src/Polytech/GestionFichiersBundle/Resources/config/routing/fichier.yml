@@ -1,0 +1,30 @@
+admin_fichier:
+    path:     /
+    defaults: { _controller: "GestionFichiersBundle:FichierAdmin:index" }
+
+admin_fichier_show:
+    path:     /{id}/show
+    defaults: { _controller: "GestionFichiersBundle:FichierAdmin:show" }
+
+admin_fichier_new:
+    path:     /new
+    defaults: { _controller: "GestionFichiersBundle:FichierAdmin:new" }
+
+admin_fichier_create:
+    path:     /create
+    defaults: { _controller: "GestionFichiersBundle:FichierAdmin:create" }
+    methods:  POST
+
+admin_fichier_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GestionFichiersBundle:FichierAdmin:edit" }
+
+admin_fichier_update:
+    path:     /{id}/update
+    defaults: { _controller: "GestionFichiersBundle:FichierAdmin:update" }
+    methods:  [POST, PUT]
+
+admin_fichier_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GestionFichiersBundle:FichierAdmin:delete" }
+    methods:  [POST, DELETE]

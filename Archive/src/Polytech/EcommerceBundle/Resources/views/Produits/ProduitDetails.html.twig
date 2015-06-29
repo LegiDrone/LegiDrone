@@ -1,0 +1,41 @@
+{% extends "PolytechProjetCoBundle::layout.html.twig" %}
+
+{% block title %}
+  {{title}} - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<h2>{{produit.nom}}</h2>
+
+<div class="box">
+    <div class="box-body">
+        <div class="col-md-6">
+            <img src="{{ asset(produit.getMediaId.AssetPath) }}" alt="{{ produit.getMediaId.name }}" class="img-Products-Details">
+            
+        </div>
+        <div class="col-md-6">
+            <p>{{produit.description}}</p>
+            <h4>{{produit.prix}} €</h4>
+            <form action="{{ path('polytech_ecommerce_AjouterPanier', { 'id' : produit.id }) }}" method="get">
+                <select name="qte" class="span1">
+                    {% for i in 1..10 %}
+                        <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+
+                <div>
+                    <button class="btn btn-primary">Ajouter au panier</button>
+                </div>
+                
+            </form>
+        </div>
+        
+    </div>
+
+    <!--div class="box-footer clearfix">
+        <a href="{{ path('polytech_ecommerce_Panier',{'id':produit.id}) }}">
+            <button class="pull-right btn btn-primary">Ajouter au panier <i class="fa fa-arrow-circle-right"></i></button>
+        </a>
+    </div-->         
+</div>
+{% endblock %}

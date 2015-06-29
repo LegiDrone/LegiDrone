@@ -1,0 +1,77 @@
+
+{% extends "PolytechProjetCoBundle::layoutAdmin.html.twig" %}
+
+{% block title %}
+  Utilisateurs - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-errors">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+  <h2>Utilisateurs</h2>
+<div class="box box-info">
+    <div class="box-header with-border">
+        <div class="pull-left">
+            <h4>Liste des utilisateurs</h4>
+        </div>
+        <div class="pull-right">
+            <a href="{{ path('admin_user_new') }}" class="btn btn-primary btn-block btn-flat">
+                Créer un nouvel utilisateur
+            </a>
+        </div>
+    </div>
+    <div class="box-body">
+        
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Nom d'utilisateur</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Numrue</th>
+                    <th>Nomrue</th>
+                    <th>Cp</th>
+                    <th>Ville</th>
+                    <th>Civilite</th>
+                    <th>Dateinscription</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('admin_user_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>
+                    <td>{{ entity.nom }}</td>
+                    <td>{{ entity.prenom }}</td>
+                    <td>{{ entity.numrue }}</td>
+                    <td>{{ entity.nomrue }}</td>
+                    <td>{{ entity.cp }}</td>
+                    <td>{{ entity.ville }}</td>
+                    <td>{{ entity.civilite }}</td>
+                    <td>{% if entity.dateinscription %}{{ entity.dateinscription|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>
+                        <a href="{{ path('admin_user_show', { 'id': entity.id }) }}">
+                            <i class="glyphicon glyphicon-eye-open" title="Voir le profil"></i>
+                        </a>
+                        <a href="{{ path('admin_user_edit', { 'id': entity.id }) }}" title="Editer le profil">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

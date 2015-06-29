@@ -1,0 +1,67 @@
+{% extends "PolytechProjetCoBundle::layoutAdmin.html.twig" %}
+
+{% block title %}
+  Produits - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-errors">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+  <h2>Produits</h2>
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <div class="pull-left">
+            <h4>Liste des produits</h4>
+        </div>
+        <div class="pull-right">
+            <a href="{{ path('admin_produits_new') }}" class="btn btn-primary btn-block btn-flat">
+                Créer un nouveau produit
+            </a>
+        </div>
+    </div>
+    <div class="box-body">
+        
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prix</th>
+                    <th>Disponible</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('admin_produits_show', { 'id': entity.id }) }}">{{ entity.nom }}</a></td>
+                    <td>{{ entity.prix }}</td>
+                    <td>{{ entity.disponible }}</td>
+                    <td>
+                        <a href="{{ path('admin_produits_show', { 'id': entity.id }) }}">
+                            <i class="glyphicon glyphicon-eye-open" title="Voir le produit"></i>
+                        </a>
+
+                        <a href="{{ path('admin_produits_edit', { 'id': entity.id }) }}">
+                            <i class="glyphicon glyphicon-edit" title="Editer le produit"></i>
+                        </a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

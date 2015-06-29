@@ -1,0 +1,30 @@
+admin_commandes:
+    path:     /
+    defaults: { _controller: "PolytechEcommerceBundle:CommandesAdmin:index" }
+
+admin_commandes_show:
+    path:     /{id}/show
+    defaults: { _controller: "PolytechEcommerceBundle:CommandesAdmin:show" }
+
+admin_commandes_new:
+    path:     /new
+    defaults: { _controller: "PolytechEcommerceBundle:CommandesAdmin:new" }
+
+admin_commandes_create:
+    path:     /create
+    defaults: { _controller: "PolytechEcommerceBundle:CommandesAdmin:create" }
+    methods:  POST
+
+admin_commandes_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PolytechEcommerceBundle:CommandesAdmin:edit" }
+
+admin_commandes_update:
+    path:     /{id}/update
+    defaults: { _controller: "PolytechEcommerceBundle:CommandesAdmin:update" }
+    methods:  [POST, PUT]
+
+admin_commandes_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PolytechEcommerceBundle:CommandesAdmin:delete" }
+    methods:  [POST, DELETE]

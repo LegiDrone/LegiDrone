@@ -1,0 +1,82 @@
+{% extends "PolytechProjetCoBundle::layoutAdmin.html.twig" %}
+
+{% block title %}
+  Fichiers - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-errors">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+    <h1>Modifier un fichier</h1>
+
+<div class="box">
+    <div class="box-body">
+        {{ form_start(edit_form) }}
+        <table class="table table-responsive">
+                    <tbody>
+                        <tr>
+                            <th>{{ form_label(edit_form.titre, "Nom", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}</th>
+                            <td>{{ form_errors(edit_form.titre) }}{{ form_widget(edit_form.titre, {'attr': {'class': 'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form_label(edit_form.file, "Date de validitée", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}</th>
+                            <td>{{ form_errors(edit_form.file) }}{{ form_widget(edit_form.file) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form_label(edit_form.dateValiditee, "Date de validitée", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}</th>
+                            <td>{{ form_errors(edit_form.dateValiditee) }}{{ form_widget(edit_form.dateValiditee) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form_label(edit_form.departement, "Département", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}</th>
+                            <td>{{ form_errors(edit_form.departement) }}{{ form_widget(edit_form.departement) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form_label(edit_form.entreprise, "Entreprise", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}</th>
+                            <td>{{ form_errors(edit_form.entreprise) }}{{ form_widget(edit_form.entreprise) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form_label(edit_form.drone, "Drone", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}</th>
+                            <td>{{ form_errors(edit_form.drone) }}{{ form_widget(edit_form.drone) }}</td>
+                        </tr>
+            </tbody>
+        </table>
+        
+        
+        <div class="pull-right">
+                {{ form_widget(edit_form.submit, {'attr': {'class': 'btn btn-primary'}, 'label': 'Mettre à jour'}) }}
+        </div>
+        <div class="hidden">
+            {{form_rest(edit_form)}}
+        </div>
+        {{ form_end(edit_form) }}
+    </div>
+        <div class="box-footer">
+            <div class="col-xs-6">
+                <div class="pull-center">
+                    <a href="{{ path('admin_fichier') }}" class="btn btn-primary">
+                        Retour à la liste
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-xs-6">
+                {{form_start(delete_form)}}
+                {{ form_widget(delete_form.submit, {'attr': {'class': 'btn btn-primary'}, 'label': 'Supprimer'}) }}
+                {{form_end(delete_form)}}
+            </div>
+        </div>
+        
+        
+        
+        {{ form(edit_form) }}
+</div>
+{% endblock %}

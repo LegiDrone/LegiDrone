@@ -1,0 +1,30 @@
+drones:
+    path:     /
+    defaults: { _controller: "PolytechDronesBundle:Drones:index" }
+
+drones_show:
+    path:     /{id}/show
+    defaults: { _controller: "PolytechDronesBundle:Drones:show" }
+
+drones_new:
+    path:     /new
+    defaults: { _controller: "PolytechDronesBundle:Drones:new" }
+
+drones_create:
+    path:     /create
+    defaults: { _controller: "PolytechDronesBundle:Drones:create" }
+    methods:  POST
+
+drones_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PolytechDronesBundle:Drones:edit" }
+
+drones_update:
+    path:     /{id}/update
+    defaults: { _controller: "PolytechDronesBundle:Drones:update" }
+    methods:  [POST, PUT]
+
+drones_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PolytechDronesBundle:Drones:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,7 @@
+polytech_drones_drones:
+    resource: "@PolytechDronesBundle/Resources/config/routing/drones.yml"
+    prefix:   /drones
+
+polytech_drones_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: PolytechDronesBundle:Default:index }

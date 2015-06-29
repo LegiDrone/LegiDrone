@@ -1,0 +1,16 @@
+Polytech\ProjetCoBundle\Entity\Entreprises:
+    type: entity
+    table: null
+    repositoryClass: Polytech\ProjetCoBundle\Entity\EntreprisesRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+            column: Nom
+    lifecycleCallbacks: {  }

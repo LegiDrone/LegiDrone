@@ -1,0 +1,60 @@
+polytech_ecommerce_admin_commandes:
+    resource: "@PolytechEcommerceBundle/Resources/config/routingAdminCommandes.yml"
+    prefix:   /admin/commandes
+
+polytech_ecommerce_admin_produits:
+    resource: "@PolytechEcommerceBundle/Resources/config/routingAdminProduits.yml"
+    prefix:   /admin/produits
+
+polytech_ecommerce_Produits:
+    path:     /produits
+    defaults: { _controller: PolytechEcommerceBundle:ecommerce:Produits }
+
+polytech_ecommerce_AdminProduits:
+    path:     /Admin/produits
+    defaults: { _controller: PolytechEcommerceBundle:ecommerce:AdminProduits }
+    
+polytech_ecommerce_AlterProduit:
+    path:     /Admin/produits/Alter/{id}
+    defaults: { _controller: PolytechEcommerceBundle:ecommerce:AlterProduit }
+    
+polytech_ecommerce_ProduitDetails:
+    path:     /produits/Details/{id}
+    defaults: { _controller: PolytechEcommerceBundle:ecommerce:ProduitDetails }
+    
+polytech_ecommerce_AjouterPanier:
+    path:     /produits/Ajouter/{id}
+    defaults: { _controller: PolytechEcommerceBundle:ecommerce:AjouterProduit }
+    
+polytech_ecommerce_SupprimerPanier:
+    path:     /produits/Supprimer/{id}
+    defaults: { _controller: PolytechEcommerceBundle:ecommerce:SupprimerProduit }
+    
+polytech_ecommerce_Panier:
+    path:     /panier
+    defaults: { _controller: PolytechEcommerceBundle:ecommerce:Panier }
+    
+polytech_ecommerce_Livraison:
+    path:     /livraison
+    defaults: { _controller: PolytechEcommerceBundle:ecommerce:Livraison }
+    
+polytech_ecommerce_LivraisonSuppressionAdresse:
+    path:     /livraison/Adresse/Suppression/{id}
+    defaults: { _controller: PolytechEcommerceBundle:ecommerce:SuppressionAdresse }
+    
+polytech_ecommerce_Validation:
+    path:     /Validation
+    defaults: { _controller: PolytechEcommerceBundle:ecommerce:Validation }
+
+#Route qui simule l'api banque
+polytech_ecommerce_ValidationCommande:
+    path:     /api/banque/{id}
+    defaults: { _controller: PolytechEcommerceBundle:Commandes:validationCommande }    
+    
+#Route qui simule l'api banque
+polytech_ecommerce_Virement:
+    path:     /virement
+    defaults: { _controller: PolytechEcommerceBundle:Commandes:virement }    
+
+
+    

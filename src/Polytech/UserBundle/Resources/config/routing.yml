@@ -1,0 +1,16 @@
+polytech_user_admin_user:
+    resource: "@PolytechUserBundle/Resources/config/routingAdmin.yml"
+    prefix:   /admin/user
+
+polytech_user_facture:
+    path:     /profile/factures
+    defaults: { _controller: PolytechUserBundle:User:factures }
+    
+polytech_user_facturesPDF:
+    path:     /profile/factures/pdf/{id}
+    defaults: { _controller: PolytechUserBundle:User:facturesPDF }
+    
+polytech_user_pilotes:
+    path:     /profile/pilotes
+    defaults: { _controller: PolytechUserBundle:User:pilotes }
+    

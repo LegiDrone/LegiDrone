@@ -1,0 +1,124 @@
+
+{# src/Polytech/ProjetCo/Resources/views/Advert/index.html.twig #}
+
+{% extends "PolytechProjetCoBundle::layout.html.twig" %}
+
+{% block title %}
+  {{title}} - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>{{title}}</h2>
+
+<form method="post" action="{{path('polytech_projet_co_inscription')}}">
+  {{ form_start(form, {'attr': {'class': 'register-box-body'}}) }}
+
+    <p class="login-box-msg">Inscription d'un nouveau membre</p>
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <div class="form-group has-feedback">
+        <SELECT class="form-control" name="nom">
+            <OPTION>M.</OPTION>
+            <OPTION>Mme.</OPTION>
+            <OPTION>Société</OPTION>
+        </SELECT>
+    </div>  
+            
+    <div class="form-group has-feedback">
+      {# Génération du label. #}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.Nom) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.Nom, {'attr': {'class': 'form-control'}}) }}
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+    </div>
+    
+    <div class="form-group has-feedback">
+      {# Génération du label. #}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.Prenom) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.Prenom, {'attr': {'class': 'form-control'}}) }}
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+    </div>
+    
+    <div class="form-group has-feedback">
+      {# Génération du label. #}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.Mail) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.Mail, {'attr': {'class': 'form-control'}}) }}
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+    </div>
+    
+    <div class="form-group has-feedback">
+      {# Génération du label. #}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.NumRue) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.NumRue, {'attr': {'class': 'form-control'}}) }}
+        <span class="glyphicon glyphicon-home form-control-feedback"></span>
+    </div>
+    
+    <div class="form-group has-feedback">
+      {# Génération du label. #}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.NomRue) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.NomRue, {'attr': {'class': 'form-control'}}) }}
+        <span class="glyphicon glyphicon-home form-control-feedback"></span>
+    </div>
+    
+    <div class="form-group has-feedback">
+      {# Génération du label. #}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.CP) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.CP, {'attr': {'class': 'form-control'}}) }}
+        <span class="glyphicon glyphicon-home form-control-feedback"></span>
+    </div>
+    
+    <div class="form-group has-feedback">
+      {# Génération du label. #}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.Ville) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.Ville, {'attr': {'class': 'form-control'}}) }}
+        <span class="glyphicon glyphicon-home form-control-feedback"></span>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-8"> 
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> J'accepte les <a href="#">conditions</a>
+            </label>
+          </div>                        
+        </div><!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Inscription</button>
+        </div><!-- /.col -->
+      </div>
+  <a href="login.html" class="text-center">J'ai déjà un compte</a>
+      </div><!-- /.form-box -->
+  {# Fermeture de la balise  du formulaire HTML #}
+  {{ form_end(form) }}
+</form>
+{% endblock %}

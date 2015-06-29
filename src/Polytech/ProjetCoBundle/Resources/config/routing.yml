@@ -1,0 +1,32 @@
+polytech_projet_co_home:
+    path:       /
+    defaults:   { _controller: PolytechProjetCoBundle:Main:index }
+        
+polytech_projet_co_contact:
+    path:       /Contact
+    defaults:   { _controller: PolytechProjetCoBundle:Main:contact}
+    requirements:
+        _method:  GET|POST
+ 
+polytech_projet_co_connexion:
+    path:       /Connexion
+    defaults:   { _controller: PolytechProjetCoBundle:Main:connexion}
+    
+polytech_projet_co_inscription:
+    path:       /Inscription
+    defaults:   { _controller: PolytechProjetCoBundle:Main:inscription}
+    
+polytech_projet_co_dashboard:
+    path:       /Dashboard
+    defaults:   { _controller: PolytechProjetCoBundle:Main:dashbord}
+
+polytech_projet_co_dashboardAdmin:
+    path:       /Admin/Dashboard
+    defaults:   { _controller: PolytechProjetCoBundle:Main:dashbord}
+    
+#User Bundle
+
+polytech_projet_co_AdminUser:
+    path:       /Admin/Users
+    defaults:   { _controller: PolytechUserBundle:User:AdminUser}
+

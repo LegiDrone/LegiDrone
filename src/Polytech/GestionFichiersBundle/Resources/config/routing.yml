@@ -1,0 +1,19 @@
+gestion_fichiers_admin_fichier:
+    resource: "@GestionFichiersBundle/Resources/config/routing/fichier.yml"
+    prefix:   /admin/fichier
+
+polytech_gestion_fichiers_homepage:
+    path:     /Upload
+    defaults: { _controller: GestionFichiersBundle:Fichier:upload}
+
+polytech_suppresion_fichiers:
+    path:     /Delete/{id}
+    defaults: { _controller: GestionFichiersBundle:Fichier:delete}
+
+polytech_dowload_fichiers:
+    path:     /Download/{id}
+    defaults: { _controller: GestionFichiersBundle:Fichier:download}
+
+polytech_preview_fichiers:
+    path:     /Preview/{id}
+    defaults: { _controller: GestionFichiersBundle:Fichier:preview}

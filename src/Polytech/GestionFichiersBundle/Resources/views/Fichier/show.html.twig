@@ -1,0 +1,105 @@
+{% extends "PolytechProjetCoBundle::layoutAdmin.html.twig" %}
+
+{% block title %}
+  Drones - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-errors">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+    <h1>Fichier</h1>
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <div class="pull-left">
+            <h4>Détails du fichier</h4>
+        </div>
+    </div>
+    <div class="box-body">
+        <table class="table table-responsive">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td>{{ entity.type }}</td>
+                </tr>
+                <tr>
+                    <th>Titre</th>
+                    <td>{{ entity.titre }}</td>
+                </tr>
+                <tr>
+                    <th>Extension</th>
+                    <td>{{ entity.extension }}</td>
+                </tr>
+                <tr>
+                    <th>Lien</th>
+                    <td>{{ entity.lien }}</td>
+                </tr>
+                <tr>
+                    <th>Auteur</th>
+                    <td>{{ entity.auteur }}</td>
+                </tr>
+                <tr>
+                    <th>Taille</th>
+                    <td>{{ entity.taille }}</td>
+                </tr>
+                {% if entity.entreprise != "" %}
+                    <tr>
+                        <th>Entreprise</th>
+                        <td>{{ entity.entreprise }}</td>
+                    </tr>
+                {% endif %}
+                {% if entity.drone != "" %}
+                    <tr>
+                        <th>Drone</th>
+                        <td>{{ entity.drone }}</td>
+                    </tr>
+                {% endif %}
+                {% if entity.departement != "" %}
+                    <tr>
+                        <th>Département</th>
+                        <td>{{ entity.departement }}</td>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <th>Datevaliditee</th>
+                    <td>{{ entity.dateValiditee|date('Y-m-d H:i:s') }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="box-footer">
+        <div class="col-xs-4">
+            <div class="pull-center">
+                <a href="{{ path('admin_fichier') }}" class="btn btn-primary">
+                    Retour à la liste
+                </a>
+            </div>
+            
+        </div>
+        <div class="col-xs-4">
+            <a href="{{ path('admin_fichier_edit', { 'id': entity.id }) }}" class="btn btn-primary">
+                Éditer
+            </a>
+        </div>
+        <div class="col-xs-4">
+            {{form_start(delete_form)}}
+            {{form_widget(delete_form.submit, {'attr': {'class': 'btn btn-primary'}, 'label': 'Supprimer'}) }}
+            {{form_end(delete_form)}}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

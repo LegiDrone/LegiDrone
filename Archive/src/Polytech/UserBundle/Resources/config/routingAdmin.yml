@@ -1,0 +1,30 @@
+admin_user:
+    path:     /
+    defaults: { _controller: "PolytechUserBundle:UserAdmin:index" }
+
+admin_user_show:
+    path:     /{id}/show
+    defaults: { _controller: "PolytechUserBundle:UserAdmin:show" }
+
+admin_user_new:
+    path:     /new
+    defaults: { _controller: "PolytechUserBundle:UserAdmin:new" }
+
+admin_user_create:
+    path:     /create
+    defaults: { _controller: "PolytechUserBundle:UserAdmin:create" }
+    methods:  POST
+
+admin_user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PolytechUserBundle:UserAdmin:edit" }
+
+admin_user_update:
+    path:     /{id}/update
+    defaults: { _controller: "PolytechUserBundle:UserAdmin:update" }
+    methods:  [POST, PUT]
+
+admin_user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PolytechUserBundle:UserAdmin:delete" }
+    methods:  [POST, DELETE]

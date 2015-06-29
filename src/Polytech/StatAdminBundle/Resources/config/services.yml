@@ -1,0 +1,4 @@
+services:
+#    polytech_stat_admin.example:
+#        class: Polytech\StatAdminBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

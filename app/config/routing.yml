@@ -1,0 +1,52 @@
+polytech_drones:
+    resource: "@PolytechDronesBundle/Resources/config/routing.yml"
+    prefix:   /
+
+polytech_ecommerce:
+    resource: "@PolytechEcommerceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+polytech_projet_co:
+    resource: "@PolytechProjetCoBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+polytech_user:
+    resource: "@PolytechUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+polytech_departement:
+    resource: "@DepartementBundle/Resources/config/routing.yml"
+    prefix:   /
+
+polytech_gestion_fichiers:
+    resource: "@GestionFichiersBundle/Resources/config/routing.yml"
+    prefix:   /
+
+polytech_Departements:
+    pattern: /departements
+    defaults: {_controller: PolytechProjetCoBundle:Main:dashbordColorMap }
+    options:
+        expose: true
+        
+        
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

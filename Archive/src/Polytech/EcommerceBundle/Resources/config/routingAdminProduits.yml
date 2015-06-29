@@ -1,0 +1,30 @@
+admin_produits:
+    path:     /
+    defaults: { _controller: "PolytechEcommerceBundle:ProduitsAdmin:index" }
+
+admin_produits_show:
+    path:     /{id}/show
+    defaults: { _controller: "PolytechEcommerceBundle:ProduitsAdmin:show" }
+
+admin_produits_new:
+    path:     /new
+    defaults: { _controller: "PolytechEcommerceBundle:ProduitsAdmin:new" }
+
+admin_produits_create:
+    path:     /create
+    defaults: { _controller: "PolytechEcommerceBundle:ProduitsAdmin:create" }
+    methods:  POST
+
+admin_produits_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PolytechEcommerceBundle:ProduitsAdmin:edit" }
+
+admin_produits_update:
+    path:     /{id}/update
+    defaults: { _controller: "PolytechEcommerceBundle:ProduitsAdmin:update" }
+    methods:  [POST, PUT]
+
+admin_produits_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PolytechEcommerceBundle:ProduitsAdmin:delete" }
+    methods:  [POST, DELETE]

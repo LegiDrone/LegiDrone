@@ -1,0 +1,69 @@
+
+{% extends "PolytechProjetCoBundle::layoutAdmin.html.twig" %}
+
+{% block title %}
+  Drones - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-errors">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<h1>Drones</h1>
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <div class="pull-left">
+            <h4>Détails du drone</h4>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="col-md-6">
+            <img src="{{ asset(entity.getMedia.AssetPath) }}" alt="{{ entity.getMedia.name }}" class="img-Products-Details">
+        </div>
+        <div class="col-md-6">
+            <table class="table table-responsive">
+                <tbody>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ entity.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Homologation</th>
+                        <td>{{ entity.approval }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="box-footer">
+        <div class="col-xs-4">
+            <div class="pull-center">
+                <a href="{{ path('drones') }}" class="btn btn-primary">
+                    Retour à la liste
+                </a>
+            </div>
+            
+        </div>
+        <div class="col-xs-4">
+            <a href="{{ path('drones_edit', { 'id': entity.id }) }}" class="btn btn-primary">
+                Éditer
+            </a>
+        </div>
+        <div class="col-xs-4">
+            {{form_start(delete_form)}}
+            {{form_widget(delete_form.submit, {'attr': {'class': 'btn btn-primary'}, 'label': 'Supprimer'}) }}
+            {{form_end(delete_form)}}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "PolytechProjetCoBundle::layoutAdmin.html.twig" %}
+
+{% block title %}
+  Drones - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-errors">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+    <h1>Drones</h1>
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <div class="pull-left">
+            <h4>Liste des drones</h4>
+        </div>
+        <div class="pull-right">
+            <a href="{{ path('drones_new') }}" class="btn btn-primary btn-block btn-flat">
+                Ajouter un nouveau drone
+            </a>
+        </div>
+    </div>
+    <div class="box-body">
+        
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Homologation</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('drones_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+                <td>{{ entity.approval }}</td>
+                <td>
+                    <a href="{{ path('drones_show', { 'id': entity.id }) }}">
+                        <i class="glyphicon glyphicon-eye-open" title="Voir le drone"></i>
+                    </a>
+                    <a href="{{ path('drones_edit', { 'id': entity.id }) }}">
+                        <i class="glyphicon glyphicon-edit" title="Editer le drone"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+
+{% endblock %}

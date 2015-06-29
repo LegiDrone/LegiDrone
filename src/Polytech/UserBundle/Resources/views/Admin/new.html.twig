@@ -1,0 +1,35 @@
+
+{% extends "PolytechProjetCoBundle::layoutAdmin.html.twig" %}
+
+{% block title %}
+  Utilisateurs - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-errors">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+  <h2>Nouvel utilisateur</h2>
+
+<div class="box">
+    <div class="box-body">
+        {{ form(form) }}
+    
+    </div>
+</div>
+
+        <div class="pull-left">
+    <a href="{{ path('admin_user') }}" class="btn btn-primary">
+                    Retour à la liste
+                </a>
+</div>
+{% endblock %}

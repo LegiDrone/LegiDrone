@@ -1,0 +1,100 @@
+{% extends "PolytechProjetCoBundle::layout.html.twig" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="span9">
+            
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+            
+            <h2>Valider mon panier</h2>
+            <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Détails du panier</h3>
+                  <div class="box-tools pull-right">
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Références</th>
+                                <th>Quantité</th>
+                                <th>Prix unitaire</th>
+                                <th>Total HT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if commande|length == 0 %}
+                                <tr>
+                                    <td colspan="4"><center>Aucun articles dans votre panier</center></td>
+                                </tr>
+                            {% endif %}
+
+                            {% for produit in commande.commande.produit %}
+                            <tr>
+                                <td>{{ produit.reference }}</td>
+                                <td>
+                                    {{ produit.quantite }}
+                                </td>
+                                <td>{{ produit.prixHT }} €</td>
+                                <td>{{ produit.prixHT * produit.quantite }} €</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            
+                    <dl class="dl-horizontal pull-right">
+                        <dt>Total HT :</dt><dd>{{ commande.commande.prixHT }} €</dd>
+
+                        {% for key, tva in commande.commande.tva %}
+                            <dt>TVA {{ key }} :</dt><dd>{{ tva }} €</dd>
+                        {% endfor %}
+
+                        <dt>Total TTC :</dt><dd>{{ commande.commande.prixTTC }} €</dd>
+                    </dl>
+
+                    <div class="span3 pull-left">
+                        <dl class="pull-left">
+                            <dt><h4>Adresse de livraison</h4></dt>
+                            <dt>{{ commande.commande.livraison.prenom }} {{ commande.commande.livraison.nom }}</dt>
+                            <dt>{{ commande.commande.livraison.adresse }}</dt>
+                            <dt>{{ commande.commande.livraison.cp }} {{ commande.commande.livraison.ville }} - {{ commande.commande.livraison.pays }}</dt>
+                        </dl>
+                    </div>
+
+                    <div class="span3 pull-left">
+                        <dl class="pull-left">
+                            <dt><h4>Adresse de facturation</h4></dt>
+                            <dt>{{ commande.commande.facturation.prenom }} {{ commande.commande.facturation.nom }}</dt>
+                            <dt>{{ commande.commande.facturation.adresse }}</dt>
+                            <dt>{{ commande.commande.facturation.cp }} {{ commande.commande.facturation.ville }} - {{ commande.commande.facturation.pays }}</dt>
+                        </dl>
+                    </div>
+                    </div>
+                    <div class="box-footer">
+                        
+                        <form action="{{ path('polytech_ecommerce_ValidationCommande', {'id' : commande.id}) }}" method="POST"/>
+                            <input name="token" type="hidden" value="{{commande.commande.token}}" />
+                            <input name="prix" type="hidden" value="{{commande.commande.prixTTC}}" />
+                            <input name="date" type="hidden" value="{{commande.date|date('dmyhms')}}" />
+                            <button class="btn btn-success pull-right" type="submit">Payer</button>
+                        </form>
+                        
+                        
+                        <a href="{{ path('polytech_user_facture') }}" class="btn btn-primary">Retour</a>
+                    </div>
+            <div class="clearfix"></div>
+            
+        </div>
+
+    </div>
+</div>
+</div>
+
+{% endblock %}

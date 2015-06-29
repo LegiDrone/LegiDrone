@@ -1,0 +1,79 @@
+
+{% extends "PolytechProjetCoBundle::layoutAdmin.html.twig" %}
+
+{% block title %}
+  Utilisateurs - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-errors">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+  <h2>Nouvel utilisateur</h2>
+
+<div class="box">
+    <div class="box-body">
+        {#{ form(form) }#}
+    {{ form_start(form, {'attr': {'class': 'register-box-body'}}) }}
+
+    {{ form_errors(form) }}
+        <table class="table table-responsive">
+            <tbody>
+                <tr>
+                    <th>{{ form_label(form.nom, "Nom", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}</th>
+                    <td>{{ form_errors(form.nom) }}{{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.prenom, "Prénom", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}</th>
+                    <td>{{ form_errors(form.prenom) }}{{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.numrue, "Numéro de rue", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}</th>
+                    <td>{{ form_errors(form.numrue) }}{{ form_widget(form.numrue, {'attr': {'class': 'form-control'}}) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.nomrue, "Nom de rue", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}</th>
+                    <td>{{ form_errors(form.nomrue) }}{{ form_widget(form.nomrue, {'attr': {'class': 'form-control'}}) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.cp, "Code Postal", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}</th>
+                    <td>{{ form_errors(form.cp) }}{{ form_widget(form.cp, {'attr': {'class': 'form-control'}}) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.ville, "Ville", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}</th>
+                    <td>{{ form_errors(form.ville) }}{{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.civilite, "Civilité", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}</th>
+                    <td>{{ form_errors(form.civilite) }}{{ form_widget(form.civilite, {'attr': {'class': 'form-control'}}) }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+        <div class="pull-right">
+            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}, 'label': 'Créer l\'utilisateur' }) }}
+        </div>
+  
+
+{{ form_rest(form) }}
+  
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+    </div>
+</div>
+
+        <div class="pull-left">
+    <a href="{{ path('admin_user') }}" class="btn btn-primary">
+                    Retour à la liste
+                </a>
+</div>
+{% endblock %}
