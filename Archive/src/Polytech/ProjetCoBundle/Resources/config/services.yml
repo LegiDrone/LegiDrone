@@ -1,4 +1,0 @@
-services:
-#    polytech_projet_co.example:
-#        class: Polytech\ProjetCoBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
