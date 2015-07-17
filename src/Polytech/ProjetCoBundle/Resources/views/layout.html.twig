@@ -191,7 +191,7 @@
 		    {
                 $.ajax({
                     type : 'get',
-                    url : 'http://localhost/ProjetCo/web/app_dev.php/departements',
+                    url : 'http://localhost/ProjetCoLast/LegiDrone/web/app_dev.php/departements',
                     //url : Routing.generate('departements'),
                     success: function(data){ 
                         if(parseInt(code) in data)//presence du département
@@ -223,7 +223,7 @@
 		});
        $.ajax({
             type : 'get',
-           url : 'http://localhost/ProjetCo/web/app_dev.php/departements',
+           url : 'http://localhost/ProjetCoLast/LegiDrone/web/app_dev.php/departements',
            //url : Routing.generate('departements'),
             success: function(data){ 
                 $.each(data, function(index, value){         

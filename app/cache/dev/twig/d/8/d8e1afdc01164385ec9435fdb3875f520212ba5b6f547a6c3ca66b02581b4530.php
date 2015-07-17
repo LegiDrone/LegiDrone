@@ -15,8 +15,8 @@ class __TwigTemplate_d8e1afdc01164385ec9435fdb3875f520212ba5b6f547a6c3ca66b02581
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_cf50efcaa671c16cf4f75d48eca58495a10eea196d355146db9bd56ee5c56ee5 = $this->env->getExtension("native_profiler");
-        $__internal_cf50efcaa671c16cf4f75d48eca58495a10eea196d355146db9bd56ee5c56ee5->enter($__internal_cf50efcaa671c16cf4f75d48eca58495a10eea196d355146db9bd56ee5c56ee5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PolytechProjetCoBundle:Layout:LeftMenu.html.twig"));
+        $__internal_c4db895d661f283189604bdaee009c9d924383a03f2e252553216fea9a7170a4 = $this->env->getExtension("native_profiler");
+        $__internal_c4db895d661f283189604bdaee009c9d924383a03f2e252553216fea9a7170a4->enter($__internal_c4db895d661f283189604bdaee009c9d924383a03f2e252553216fea9a7170a4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PolytechProjetCoBundle:Layout:LeftMenu.html.twig"));
 
         // line 1
         if ($this->env->getExtension('security')->isGranted("ROLE_ADMIN")) {
@@ -116,7 +116,7 @@ class __TwigTemplate_d8e1afdc01164385ec9435fdb3875f520212ba5b6f547a6c3ca66b02581
 ";
         }
         
-        $__internal_cf50efcaa671c16cf4f75d48eca58495a10eea196d355146db9bd56ee5c56ee5->leave($__internal_cf50efcaa671c16cf4f75d48eca58495a10eea196d355146db9bd56ee5c56ee5_prof);
+        $__internal_c4db895d661f283189604bdaee009c9d924383a03f2e252553216fea9a7170a4->leave($__internal_c4db895d661f283189604bdaee009c9d924383a03f2e252553216fea9a7170a4_prof);
 
     }
 

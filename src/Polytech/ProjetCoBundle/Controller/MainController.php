@@ -180,21 +180,21 @@ class MainController extends Controller
         if($this->get('security.context')->isGranted('ROLE_PILOTE'))
         {
             $em = $this->getDoctrine()->getManager();
-        $RepFiles = $em->getRepository('GestionFichiersBundle:Fichier');
-        $RepDrone = $em->getRepository('PolytechDronesBundle:Drones');
+            $RepFiles = $em->getRepository('GestionFichiersBundle:Fichier');
+            $RepDrone = $em->getRepository('PolytechDronesBundle:Drones');
+            
+            $repository = $this //On récupère notre Repository
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('GestionFichiersBundle:Fichier');
+            
+            $listeFichiers = $RepFiles->myFindAll($this->container->get('security.context')->getToken()->getUser()->getEntreprise());
+            $nbFichiers = count($listeFichiers);
+            $dureeValiditee = 2; //Permet de régler le delais avant affichage de "Date en approche"
         
-		$repository = $this //On récupère notre Repository
-			->getDoctrine()
-			->getManager()
-			->getRepository('GestionFichiersBundle:Fichier')
-		;
-		
-		$listeFichiers = $RepFiles->myFindAll($this->container->get('security.context')->getToken()->getUser()->getEntreprise());
-		$nbFichiers = count($listeFichiers);
-		$dureeValiditee = 2; //Permet de régler le delais avant affichage de "Date en approche"
-        
-        // Permet de connaitre le nombre de drone de l'entreprise
-        $nbDrones = count($RepDrone->byEntreprise($this->container->get('security.context')->getToken()->getUser()->getEntreprise()));
+            // Permet de connaitre le nombre de drone de l'entreprise
+            $nbDrones = count($RepDrone->byEntreprise($this->container->get('security.context')->getToken()->getUser()->getEntreprise()));
+            
             return $this->render('PolytechProjetCoBundle:Admin:dashboardPilote.html.twig', array(
 					'dureeValiditee'=>$dureeValiditee,'nbFichiers'=>$nbFichiers,'listeFichiers'=>$listeFichiers,'nbDrones'=> $nbDrones,'title' => 'Tableau de bord Pilote'));
         }
@@ -228,7 +228,7 @@ class MainController extends Controller
     }
     
 
-      public function dashbordColorMapAction()
+    public function dashbordColorMapAction()
    {
        $em = $this->getDoctrine()->getManager();
         $RepFiles = $em->getRepository('GestionFichiersBundle:Fichier');

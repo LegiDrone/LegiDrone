@@ -1,4 +1,3 @@
-
 {# src/Polytech/ProjetCo/Resources/views/Advert/index.html.twig #}
 
 {% extends "PolytechProjetCoBundle::layoutAdmin.html.twig" %}
@@ -39,12 +38,12 @@
                         <td>{{ form_errors(form.dateValiditee) }}{{ form_widget(form.dateValiditee) }}</td>
                     </tr>
                     <tr>
-                        <th>{{ form_label(form.departement, "Fichier", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}</th>
+                        <th>{{ form_label(form.departement, "Département", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}</th>
                         <td>{{ form_errors(form.departement) }}{{ form_widget(form.departement) }}</td>
                     </tr>
                     <tr>
-                        <th>{{ form_label(form.file, "Fichier", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}</th>
-                        <td>{{ form_errors(form.file) }}{{ form_widget(form.file) }}</td>
+                        <th>{{ form_label(form.file, "Fichier (glisser)", {'label_attr': {'class': 'col-sm-9 control-label'}}) }}</th>
+                        <td>{{ form_errors(form.file) }}{{ form_widget(form.file, {'attr': {'class': 'cotam btn-block dropzone'}}) }}</td>
                     </tr>
                 </tbody>
             </table>  

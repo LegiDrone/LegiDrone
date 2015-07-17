@@ -358,7 +358,7 @@ class appProdProjectContainer extends Container
         $a = $this->get('annotation_reader');
         $b = new \Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver(array(($this->targetDirs[3].'/src/Polytech/ProjetCoBundle/Resources/config/doctrine') => 'Polytech\\ProjetCoBundle\\Entity'));
         $b->setGlobalBasename('mapping');
-        $c = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => ($this->targetDirs[3].'/src/Polytech/UserBundle/Entity'), 1 => ($this->targetDirs[3].'/src/Polytech/DepartementBundle/Entity'), 2 => ($this->targetDirs[3].'/src/Polytech/EcommerceBundle/Entity'), 3 => ($this->targetDirs[3].'/src/Polytech/GestionFichiersBundle/Entity'), 4 => ($this->targetDirs[3].'/src/Polytech/DronesBundle/Entity')));
+        $c = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => ($this->targetDirs[3].'/src/Polytech/UserBundle/Entity'), 1 => ($this->targetDirs[3].'/src/Polytech/DepartementBundle/Entity'), 2 => ($this->targetDirs[3].'/src/Polytech/EcommerceBundle/Entity'), 3 => ($this->targetDirs[3].'/src/Polytech/GestionFichiersBundle/Entity'), 4 => ($this->targetDirs[3].'/src/Polytech/DronesBundle/Entity'), 5 => ($this->targetDirs[3].'/src/Polytech/StatAdminBundle/Entity')));
         $d = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
         $d->addDriver($b, 'Polytech\\ProjetCoBundle\\Entity');
         $d->addDriver($c, 'Polytech\\UserBundle\\Entity');
@@ -366,9 +366,10 @@ class appProdProjectContainer extends Container
         $d->addDriver($c, 'Polytech\\EcommerceBundle\\Entity');
         $d->addDriver($c, 'Polytech\\GestionFichiersBundle\\Entity');
         $d->addDriver($c, 'Polytech\\DronesBundle\\Entity');
+        $d->addDriver($c, 'Polytech\\StatAdminBundle\\Entity');
         $d->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(new \Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator(array(($this->targetDirs[3].'/vendor/friendsofsymfony/user-bundle/Resources/config/doctrine-mapping') => 'FOS\\UserBundle\\Model'), '.orm.xml')), 'FOS\\UserBundle\\Model');
         $e = new \Doctrine\ORM\Configuration();
-        $e->setEntityNamespaces(array('PolytechProjetCoBundle' => 'Polytech\\ProjetCoBundle\\Entity', 'PolytechUserBundle' => 'Polytech\\UserBundle\\Entity', 'DepartementBundle' => 'Polytech\\DepartementBundle\\Entity', 'PolytechEcommerceBundle' => 'Polytech\\EcommerceBundle\\Entity', 'GestionFichiersBundle' => 'Polytech\\GestionFichiersBundle\\Entity', 'PolytechDronesBundle' => 'Polytech\\DronesBundle\\Entity'));
+        $e->setEntityNamespaces(array('PolytechProjetCoBundle' => 'Polytech\\ProjetCoBundle\\Entity', 'PolytechUserBundle' => 'Polytech\\UserBundle\\Entity', 'DepartementBundle' => 'Polytech\\DepartementBundle\\Entity', 'PolytechEcommerceBundle' => 'Polytech\\EcommerceBundle\\Entity', 'GestionFichiersBundle' => 'Polytech\\GestionFichiersBundle\\Entity', 'PolytechDronesBundle' => 'Polytech\\DronesBundle\\Entity', 'PolytechStatAdminBundle' => 'Polytech\\StatAdminBundle\\Entity'));
         $e->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_metadata_cache'));
         $e->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_query_cache'));
         $e->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_result_cache'));
@@ -404,19 +405,19 @@ class appProdProjectContainer extends Container
     protected function getDoctrineCache_Providers_Doctrine_Orm_DefaultMetadataCacheService()
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
-        $instance->setNamespace('sf2orm_default_dbc2ba1e484d997b03e61f1f799ab6c70153ac24d8abbd61e812da4a68651569');
+        $instance->setNamespace('sf2orm_default_0ceb8f92c3b7e776d931a41d949717c1e9bc984088601a1951da32dbbb366b7b');
         return $instance;
     }
     protected function getDoctrineCache_Providers_Doctrine_Orm_DefaultQueryCacheService()
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
-        $instance->setNamespace('sf2orm_default_dbc2ba1e484d997b03e61f1f799ab6c70153ac24d8abbd61e812da4a68651569');
+        $instance->setNamespace('sf2orm_default_0ceb8f92c3b7e776d931a41d949717c1e9bc984088601a1951da32dbbb366b7b');
         return $instance;
     }
     protected function getDoctrineCache_Providers_Doctrine_Orm_DefaultResultCacheService()
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
-        $instance->setNamespace('sf2orm_default_dbc2ba1e484d997b03e61f1f799ab6c70153ac24d8abbd61e812da4a68651569');
+        $instance->setNamespace('sf2orm_default_0ceb8f92c3b7e776d931a41d949717c1e9bc984088601a1951da32dbbb366b7b');
         return $instance;
     }
     protected function getEventDispatcherService()
@@ -641,7 +642,7 @@ class appProdProjectContainer extends Container
     }
     protected function getFosJsRouting_ExtractorService()
     {
-        return $this->services['fos_js_routing.extractor'] = new \FOS\JsRoutingBundle\Extractor\ExposedRoutesExtractor($this->get('router'), array(), __DIR__, array('FrameworkBundle' => 'Symfony\\Bundle\\FrameworkBundle\\FrameworkBundle', 'SecurityBundle' => 'Symfony\\Bundle\\SecurityBundle\\SecurityBundle', 'TwigBundle' => 'Symfony\\Bundle\\TwigBundle\\TwigBundle', 'MonologBundle' => 'Symfony\\Bundle\\MonologBundle\\MonologBundle', 'SwiftmailerBundle' => 'Symfony\\Bundle\\SwiftmailerBundle\\SwiftmailerBundle', 'AsseticBundle' => 'Symfony\\Bundle\\AsseticBundle\\AsseticBundle', 'DoctrineBundle' => 'Doctrine\\Bundle\\DoctrineBundle\\DoctrineBundle', 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle', 'PolytechProjetCoBundle' => 'Polytech\\ProjetCoBundle\\PolytechProjetCoBundle', 'PolytechUserBundle' => 'Polytech\\UserBundle\\PolytechUserBundle', 'FOSUserBundle' => 'FOS\\UserBundle\\FOSUserBundle', 'DepartementBundle' => 'Polytech\\DepartementBundle\\DepartementBundle', 'PolytechEcommerceBundle' => 'Polytech\\EcommerceBundle\\PolytechEcommerceBundle', 'GestionFichiersBundle' => 'Polytech\\GestionFichiersBundle\\GestionFichiersBundle', 'KnpPaginatorBundle' => 'Knp\\Bundle\\PaginatorBundle\\KnpPaginatorBundle', 'PolytechDronesBundle' => 'Polytech\\DronesBundle\\PolytechDronesBundle', 'LexikFormFilterBundle' => 'Lexik\\Bundle\\FormFilterBundle\\LexikFormFilterBundle', 'FOSJsRoutingBundle' => 'FOS\\JsRoutingBundle\\FOSJsRoutingBundle'));
+        return $this->services['fos_js_routing.extractor'] = new \FOS\JsRoutingBundle\Extractor\ExposedRoutesExtractor($this->get('router'), array(), __DIR__, array('FrameworkBundle' => 'Symfony\\Bundle\\FrameworkBundle\\FrameworkBundle', 'SecurityBundle' => 'Symfony\\Bundle\\SecurityBundle\\SecurityBundle', 'TwigBundle' => 'Symfony\\Bundle\\TwigBundle\\TwigBundle', 'MonologBundle' => 'Symfony\\Bundle\\MonologBundle\\MonologBundle', 'SwiftmailerBundle' => 'Symfony\\Bundle\\SwiftmailerBundle\\SwiftmailerBundle', 'AsseticBundle' => 'Symfony\\Bundle\\AsseticBundle\\AsseticBundle', 'DoctrineBundle' => 'Doctrine\\Bundle\\DoctrineBundle\\DoctrineBundle', 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle', 'PolytechProjetCoBundle' => 'Polytech\\ProjetCoBundle\\PolytechProjetCoBundle', 'PolytechUserBundle' => 'Polytech\\UserBundle\\PolytechUserBundle', 'FOSUserBundle' => 'FOS\\UserBundle\\FOSUserBundle', 'DepartementBundle' => 'Polytech\\DepartementBundle\\DepartementBundle', 'PolytechEcommerceBundle' => 'Polytech\\EcommerceBundle\\PolytechEcommerceBundle', 'GestionFichiersBundle' => 'Polytech\\GestionFichiersBundle\\GestionFichiersBundle', 'KnpPaginatorBundle' => 'Knp\\Bundle\\PaginatorBundle\\KnpPaginatorBundle', 'PolytechDronesBundle' => 'Polytech\\DronesBundle\\PolytechDronesBundle', 'LexikFormFilterBundle' => 'Lexik\\Bundle\\FormFilterBundle\\LexikFormFilterBundle', 'FOSJsRoutingBundle' => 'FOS\\JsRoutingBundle\\FOSJsRoutingBundle', 'PolytechStatAdminBundle' => 'Polytech\\StatAdminBundle\\PolytechStatAdminBundle'));
     }
     protected function getFosJsRouting_SerializerService()
     {
@@ -1077,7 +1078,7 @@ class appProdProjectContainer extends Container
         $n->setOptions(array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
         $o = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, $this->get('security.authentication.session_strategy'), $j, 'main', $m, $n, array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $d, NULL);
         $o->setRememberMeServices($k);
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($i, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d), 2 => $l, 3 => $o, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $k, $g, $a, $d, true), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5586ed4125bbe', $a, $g), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $i, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $j, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $j, 'fos_user_security_login', false), NULL, NULL, $a));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($i, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d), 2 => $l, 3 => $o, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $k, $g, $a, $d, true), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '55a9317fd230a', $a, $g), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $i, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $j, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $j, 'fos_user_security_login', false), NULL, NULL, $a));
     }
     protected function getSecurity_PasswordEncoderService()
     {
@@ -1445,6 +1446,7 @@ class appProdProjectContainer extends Container
         $instance->addPath(($this->targetDirs[3].'/vendor/knplabs/knp-paginator-bundle/Resources/views'), 'KnpPaginator');
         $instance->addPath(($this->targetDirs[3].'/src/Polytech/DronesBundle/Resources/views'), 'PolytechDrones');
         $instance->addPath(($this->targetDirs[3].'/vendor/lexik/form-filter-bundle/Lexik/Bundle/FormFilterBundle/Resources/views'), 'LexikFormFilter');
+        $instance->addPath(($this->targetDirs[3].'/src/Polytech/StatAdminBundle/Resources/views'), 'PolytechStatAdmin');
         $instance->addPath(($this->targetDirs[2].'/Resources/views'));
         $instance->addPath(($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form'));
         return $instance;
@@ -1511,7 +1513,7 @@ class appProdProjectContainer extends Container
     protected function getSecurity_Authentication_ManagerService()
     {
         $a = $this->get('security.user_checker');
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5586ed4125bbe')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('55a9317fd230a')), true);
         $instance->setEventDispatcher($this->get('event_dispatcher'));
         return $instance;
     }
@@ -1601,6 +1603,7 @@ class appProdProjectContainer extends Container
                 'PolytechDronesBundle' => 'Polytech\\DronesBundle\\PolytechDronesBundle',
                 'LexikFormFilterBundle' => 'Lexik\\Bundle\\FormFilterBundle\\LexikFormFilterBundle',
                 'FOSJsRoutingBundle' => 'FOS\\JsRoutingBundle\\FOSJsRoutingBundle',
+                'PolytechStatAdminBundle' => 'Polytech\\StatAdminBundle\\PolytechStatAdminBundle',
             ),
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appProdProjectContainer',

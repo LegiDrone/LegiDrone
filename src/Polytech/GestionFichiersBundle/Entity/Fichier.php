@@ -5,6 +5,7 @@ namespace Polytech\GestionFichiersBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Polytech\DepartementBundle\Departement\Entity;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Polytech\ProjetCoBundle\Entity as Etp;
 
 /**
  * Fichier
@@ -91,6 +92,21 @@ class Fichier
      * @ORM\JoinColumn(nullable=true)
      */
     private $drone;
+    
+    
+    public function __construct(Etp\Entreprises $etp = null,
+                               \Polytech\DepartementBundle\Entity\Departement $departement = null,
+                               \Polytech\DronesBundle\Entity\drones $drone = null)
+    {
+        $Etp = new Etp\Entreprises;
+        $this->setEntreprise($Etp);
+        
+        //$this->$departement = 7;
+        $this->setDrone($drone);
+        
+        $this->dateValiditee = new \DateTime();
+		$this->type = "Défaut";
+    }
 
     /**
      * Get id
@@ -312,12 +328,6 @@ class Fichier
 	public function setFile(UploadedFile $file = null)
 	{
 		$this->file = $file;
-	}
-		
-	public function __construct()
-	{
-		$this->dateValiditee = new \DateTime();
-		$this->type = "Défaut";
 	}
 	
 	public function upload()

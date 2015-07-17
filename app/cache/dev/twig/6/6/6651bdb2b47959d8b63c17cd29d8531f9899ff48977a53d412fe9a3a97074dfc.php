@@ -15,8 +15,8 @@ class __TwigTemplate_6651bdb2b47959d8b63c17cd29d8531f9899ff48977a53d412fe9a3a970
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3edbcd530fa21e6cc33446788d75eb93258b04008e44a7bd3127b6664dcdbd00 = $this->env->getExtension("native_profiler");
-        $__internal_3edbcd530fa21e6cc33446788d75eb93258b04008e44a7bd3127b6664dcdbd00->enter($__internal_3edbcd530fa21e6cc33446788d75eb93258b04008e44a7bd3127b6664dcdbd00_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PolytechUserBundle::UserDropDown.html.twig"));
+        $__internal_376eb6d2ef460d385cb168d79a0f6773acbb816b3c22dec4b796be68a83ef238 = $this->env->getExtension("native_profiler");
+        $__internal_376eb6d2ef460d385cb168d79a0f6773acbb816b3c22dec4b796be68a83ef238->enter($__internal_376eb6d2ef460d385cb168d79a0f6773acbb816b3c22dec4b796be68a83ef238_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PolytechUserBundle::UserDropDown.html.twig"));
 
         // line 1
         $context["totalProduits"] = 0;
@@ -130,7 +130,7 @@ class __TwigTemplate_6651bdb2b47959d8b63c17cd29d8531f9899ff48977a53d412fe9a3a970
 </ul>
 </li>";
         
-        $__internal_3edbcd530fa21e6cc33446788d75eb93258b04008e44a7bd3127b6664dcdbd00->leave($__internal_3edbcd530fa21e6cc33446788d75eb93258b04008e44a7bd3127b6664dcdbd00_prof);
+        $__internal_376eb6d2ef460d385cb168d79a0f6773acbb816b3c22dec4b796be68a83ef238->leave($__internal_376eb6d2ef460d385cb168d79a0f6773acbb816b3c22dec4b796be68a83ef238_prof);
 
     }
 
